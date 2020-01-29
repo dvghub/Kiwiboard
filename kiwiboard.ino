@@ -2,16 +2,18 @@
 
 int blue = 8;
 int led = 13;
+int high = HIGH;
 
 void setup() {
-  pinMode(blue, INPUT);
-  digitalWrite(blue, HIGH);
+  pinMode(blue, INPUT_PULLUP);
   pinMode(led, OUTPUT);
+  Keyboard.begin();
 }
 
 void loop() {
-  if (digitalRead(blue) == LOW) {
+  int state = digitalRead(blue);
+  if (state != high) {
     Keyboard.write('b');
-    digitalWrite(led, HIGH);
   }
 }
+//
